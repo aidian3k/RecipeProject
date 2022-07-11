@@ -4,6 +4,7 @@ import aidian3k.springframework.springproject.recipeproject.domain.*;
 import aidian3k.springframework.springproject.recipeproject.repositories.CategoryRepository;
 import aidian3k.springframework.springproject.recipeproject.repositories.RecipeRepository;
 import aidian3k.springframework.springproject.recipeproject.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,7 @@ import java.util.Optional;
 
 
 @Component
+@Slf4j
     public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
         private final CategoryRepository categoryRepository;
@@ -34,6 +36,7 @@ import java.util.Optional;
 
         private List<Recipe> getRecipes() {
 
+            log.debug("I am creating list!");
             List<Recipe> recipes = new ArrayList<>(2);
 
             //get UOMs
