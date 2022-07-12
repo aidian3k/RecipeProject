@@ -12,5 +12,6 @@ to add new recipe to the database, edit and delete stored recipes from the websi
 * Spring Boot 2.7.1,
 * ThymeLeaf 3.0.15,
 * BootStrap css 3.3.7,
+* Html 5,
 * H2database 2.1.214,
 * MySql 8.0.0
