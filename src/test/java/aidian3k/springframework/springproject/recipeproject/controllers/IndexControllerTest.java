@@ -9,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -40,6 +39,16 @@ class IndexControllerTest {
     void testMockMvc() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
         mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("index"));
+    }
+
+    @Test
+    void testConnectionId()  {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
+        try {
+            mockMvc.perform(get("/recipe/show/1")).andExpect(status().isOk()).andExpect(view().name("recipe/show"));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
