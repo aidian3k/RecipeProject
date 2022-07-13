@@ -27,12 +27,15 @@ class IndexControllerTest {
     @Mock
     Model model;
 
+    RecipeController recipeController;
+
     IndexController indexController;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
         indexController = new IndexController(recipeService);
+        recipeController = new RecipeController(recipeService);
     }
 
     @Test
@@ -43,7 +46,7 @@ class IndexControllerTest {
 
     @Test
     void testConnectionId()  {
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
         try {
             mockMvc.perform(get("/recipe/show/1")).andExpect(status().isOk()).andExpect(view().name("recipe/show"));
         } catch (Exception e) {
