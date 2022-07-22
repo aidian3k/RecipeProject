@@ -27,10 +27,11 @@ public class RecipeController {
     public String newRecipe(Model model){
         model.addAttribute("recipe", new RecipeCommand());
 
-        return "/recipe/recipeform";
+        return "recipe/recipeform";
     }
 
-    @PostMapping("recipe")
+    @PostMapping
+    @RequestMapping( "recipe" )
     public String saveOrUpdate(@ModelAttribute RecipeCommand command){
         RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
 
