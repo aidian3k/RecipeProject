@@ -56,6 +56,22 @@
             transition: color 500ms;
         }
 
+        .adding-recipe {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 700;
+            transition: all 0.5s linear;
+            font-size: large;
+        }
+
+        .adding-recipe:hover {
+            color: darkorchid;
+        }
+
+        .adding-recipe:visited {
+            color: gray;
+        }
+
     </style>
 </head>
 <body>
@@ -67,6 +83,7 @@
     <div class="jumbotron number-content" >
         <h1 class="display-4 number-recipes" th:text="${numberOfRecipes}">Number of recipes</h1>
         <p class="lead content">Current number of Recipes stored in the database</p>
+        <a class="adding-recipe" th:href="@{'/recipe/new'}">Add a new recipe!</a>
     </div>
 
     <table class="table table-striped table-dark table-content" th:if="${not #lists.isEmpty(recipes)}">
@@ -77,6 +94,7 @@
             <th scope="col">Description</th>
             <th scope="col">View</th>
             <th scope="col">Update</th>
+            <th scope="col">Delete</th>
         </tr>
 
         </thead>
@@ -90,6 +108,7 @@
                 <a href="#">View</a>
             </td>
             <td> <a href="#">Update</a> </td>
+            <td> <a href="#">Delete</a> </td>
         </tr>
 
         <tr th:remove="all">
@@ -97,6 +116,7 @@
             <td>Jacob</td>
             <td> <a href="#">View</a> </td>
             <td> <a href="#">Update</a> </td>
+            <td> <a href="#">Delete</a> </td>
         </tr>
 
         <tr th:remove="all">
@@ -104,6 +124,8 @@
             <td>Larry</td>
             <td> <a href="#">View</a> </td>
             <td> <a href="#">Update</a> </td>
+            <td> <a href="#">Delete</a> </td>
+            <td> <a href="#">Delete</a> </td>
         </tr>
 
         <tr th:each="recipe : ${recipes}">
@@ -111,6 +133,7 @@
             <td th:text="${recipe.description}"></td>
             <td> <a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/show'}">View </a> </td>
             <td> <a href="#" th:href="@{'recipe/' + ${recipe.id} + '/update'}">Update</a> </td>
+            <td> <a href="#" th:href="@{'recipe/' + ${recipe.id} + '/delete'}">Delete</a> </td>
         </tr>
 
         </tbody>
