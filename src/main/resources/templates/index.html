@@ -76,6 +76,7 @@
             <th scope="col">#</th>
             <th scope="col">Description</th>
             <th scope="col">View</th>
+            <th scope="col">Update</th>
         </tr>
 
         </thead>
@@ -88,24 +89,28 @@
             <td>
                 <a href="#">View</a>
             </td>
+            <td> <a href="#">Update</a> </td>
         </tr>
 
         <tr th:remove="all">
             <td>2</td>
             <td>Jacob</td>
             <td> <a href="#">View</a> </td>
+            <td> <a href="#">Update</a> </td>
         </tr>
 
         <tr th:remove="all">
             <td>3</td>
             <td>Larry</td>
             <td> <a href="#">View</a> </td>
+            <td> <a href="#">Update</a> </td>
         </tr>
 
         <tr th:each="recipe : ${recipes}">
             <td th:text="${recipe.id}"></td>
             <td th:text="${recipe.description}"></td>
-            <td> <a href="#" th:href="@{'/recipe/show/' + ${recipe.id}}">View </a> </td>
+            <td> <a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/show'}">View </a> </td>
+            <td> <a href="#" th:href="@{'recipe/' + ${recipe.id} + '/update'}">Update</a> </td>
         </tr>
 
         </tbody>
