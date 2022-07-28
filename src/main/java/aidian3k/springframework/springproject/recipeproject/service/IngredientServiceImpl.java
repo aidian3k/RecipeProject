@@ -52,4 +52,9 @@ public class IngredientServiceImpl implements IngredientService{
         return ingredientToIngredientCommand.convert(ingredient);
 
     }
+
+    @Override
+    public IngredientCommand saveIngredientCommand() {
+        return null;
+    }
 }
