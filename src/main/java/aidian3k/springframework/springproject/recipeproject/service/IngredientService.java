@@ -4,4 +4,5 @@ import aidian3k.springframework.springproject.recipeproject.commands.IngredientC
 
 public interface IngredientService {
     IngredientCommand findRecipeIdAndIngredientId(Long recipeId, Long ingredientId);
+    IngredientCommand saveIngredientCommand();
 }
