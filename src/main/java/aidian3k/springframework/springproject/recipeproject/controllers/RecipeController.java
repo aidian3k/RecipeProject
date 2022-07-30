@@ -22,6 +22,12 @@ public class RecipeController {
     @GetMapping
     @RequestMapping("/recipe/{id}/show")
     public String showById(@PathVariable String id, Model model){
+        try {
+            Long longId = Long.parseLong(id);
+        } catch(NumberFormatException e ) {
+            throw new NumberFormatException("NumberFormatException has been thrown for id: " + id);
+        }
+
         model.addAttribute("recipe", recipeService.findById(Long.valueOf(id)));
         return "recipe/show";
     }
@@ -37,6 +43,12 @@ public class RecipeController {
     @GetMapping
     @RequestMapping("/recipe/{id}/update")
     public String updateRecipe(Model model, @PathVariable String id){
+        try {
+            Long longId = Long.parseLong(id);
+        } catch(NumberFormatException e ) {
+            throw new NumberFormatException("NumberFormatException has been thrown for id: " + id);
+        }
+
         model.addAttribute("recipe", recipeService.findCommandById(Long.valueOf(id)));
         return "recipe/recipeform";
     }
@@ -44,6 +56,12 @@ public class RecipeController {
     @GetMapping
     @RequestMapping("/recipe/{id}/delete")
     public String deleteRecipe(@PathVariable String id){
+        try {
+            Long longId = Long.parseLong(id);
+        } catch(NumberFormatException e ) {
+            throw new NumberFormatException("NumberFormatException has been thrown for id: " + id);
+        }
+
         recipeService.deleteById(Long.valueOf(id));
         return "redirect:/";
     }
@@ -63,6 +81,18 @@ public class RecipeController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("404error");
+        modelAndView.addObject("exception", exception);
+
+        return modelAndView;
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(NumberFormatException.class)
+    public ModelAndView numberFormatExceptionHandler(NumberFormatException exception){
+        log.error("The id is not numeric!");
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("number-format-exception");
         modelAndView.addObject("exception", exception);
 
         return modelAndView;
