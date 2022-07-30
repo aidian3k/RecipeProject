@@ -85,16 +85,4 @@ public class RecipeController {
 
         return modelAndView;
     }
-
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(NumberFormatException.class)
-    public ModelAndView numberFormatExceptionHandler(NumberFormatException exception){
-        log.error("The id is not numeric!");
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("400");
-        modelAndView.addObject("exception", exception);
-
-        return modelAndView;
-    }
 }
