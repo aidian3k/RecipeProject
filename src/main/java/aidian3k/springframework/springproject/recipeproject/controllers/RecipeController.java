@@ -1,12 +1,17 @@
 package aidian3k.springframework.springproject.recipeproject.controllers;
 
 import aidian3k.springframework.springproject.recipeproject.commands.RecipeCommand;
+import aidian3k.springframework.springproject.recipeproject.exceptions.RecipeNotFoundException;
 import aidian3k.springframework.springproject.recipeproject.service.RecipeService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@Slf4j
 public class RecipeController {
     private final RecipeService recipeService;
 
@@ -49,5 +54,17 @@ public class RecipeController {
         RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
 
         return "redirect:/recipe/" + savedCommand.getId() + "/show";
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(RecipeNotFoundException.class)
+    public ModelAndView recipeNotFoundExceptionHandler(RecipeNotFoundException exception){
+        log.error("The id has not been found!");
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("404error");
+        modelAndView.addObject("exception", exception);
+
+        return modelAndView;
     }
 }

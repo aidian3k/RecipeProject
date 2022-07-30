@@ -4,6 +4,7 @@ import aidian3k.springframework.springproject.recipeproject.commands.RecipeComma
 import aidian3k.springframework.springproject.recipeproject.converters.RecipeCommandToRecipe;
 import aidian3k.springframework.springproject.recipeproject.converters.RecipeToRecipeCommand;
 import aidian3k.springframework.springproject.recipeproject.domain.Recipe;
+import aidian3k.springframework.springproject.recipeproject.exceptions.RecipeNotFoundException;
 import aidian3k.springframework.springproject.recipeproject.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -40,12 +41,12 @@ public class RecipeServiceImpl implements RecipeService{
     }
 
     @Override
-    public Recipe findById(Long l) {
+    public Recipe findById(Long id) {
 
-        Optional<Recipe> recipeOptional = recipeRepository.findById(l);
+        Optional<Recipe> recipeOptional = recipeRepository.findById(id);
 
         if (recipeOptional.isEmpty()) {
-            throw new RuntimeException("Recipe Not Found!");
+            throw new RecipeNotFoundException("Recipe has not been found! The recipe id is:" + id);
         }
 
         return recipeOptional.get();
