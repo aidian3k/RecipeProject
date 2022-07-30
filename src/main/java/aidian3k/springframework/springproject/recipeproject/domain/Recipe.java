@@ -1,8 +1,13 @@
 package aidian3k.springframework.springproject.recipeproject.domain;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.URL;
+import org.jetbrains.annotations.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,13 +20,27 @@ public class Recipe {
     private Long id;
 
     private String description;
+
+    @Range(from = 1, to = Integer.MAX_VALUE)
     private Integer prepTime;
+
+    @Range(from = 1, to = Integer.MAX_VALUE)
     private Integer cookTime;
+
+    @Range(from = 1, to = Integer.MAX_VALUE)
     private Integer servings;
+
+    @Lob
+    @NotBlank
+    @Size(min = 1, max = 255)
     private String source;
+
+    @URL
     private String url;
 
     @Lob
+    @NotBlank
+    @Size(min = 1, max = 255)
     private String directions;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
@@ -34,6 +53,8 @@ public class Recipe {
     private Difficulty difficulty;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @NotBlank
+    @Size(min = 0, max = 300)
     private Notes notes;
 
     @ManyToMany
