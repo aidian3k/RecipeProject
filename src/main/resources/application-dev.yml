@@ -8,3 +8,10 @@ spring:
       ddl-auto: validate
     show-sql: true
     database: mysql
+#    properties:
+#      javax:
+#       persistence:
+#          create-source: metadata
+#         scripts:
+#            action: create
+#            create-target: sql_script.sql
