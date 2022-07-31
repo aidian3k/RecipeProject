@@ -6,6 +6,7 @@ import aidian3k.springframework.springproject.recipeproject.repositories.RecipeR
 import aidian3k.springframework.springproject.recipeproject.repositories.UnitOfMeasureRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,7 @@ import java.util.Optional;
 
 
 @Component
+@Profile("default")
 @Slf4j
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 

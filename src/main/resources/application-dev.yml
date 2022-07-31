@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/sfg_dev
+    url: jdbc:mysql://localhost:3306/sfg_dev_user
     username: sfg_dev_user
     password: aidian3k
   jpa:
