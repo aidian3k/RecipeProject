@@ -15,12 +15,9 @@ public class UnitOfMeasureToUnitOfMeasureCommand implements Converter<UnitOfMeas
     @Override
     public UnitOfMeasureCommand convert(UnitOfMeasure unitOfMeasure) {
 
-        if (unitOfMeasure != null) {
-            final UnitOfMeasureCommand uomc = new UnitOfMeasureCommand();
-            uomc.setId(unitOfMeasure.getId());
-            uomc.setDescription(unitOfMeasure.getDescription());
-            return uomc;
-        }
-        return null;
+        final UnitOfMeasureCommand uomc = new UnitOfMeasureCommand();
+        uomc.setId(unitOfMeasure.getId());
+        uomc.setDescription(unitOfMeasure.getDescription());
+        return uomc;
     }
 }

@@ -14,9 +14,6 @@ public class UnitOfMeasureCommandToUnitOfMeasure implements Converter<UnitOfMeas
     @Synchronized
     @Nullable
     public UnitOfMeasure convert(UnitOfMeasureCommand source) {
-        if(source == null){
-            return null;
-        }
 
         final UnitOfMeasure unitOfMeasure = new UnitOfMeasure();
         unitOfMeasure.setDescription(source.getDescription());

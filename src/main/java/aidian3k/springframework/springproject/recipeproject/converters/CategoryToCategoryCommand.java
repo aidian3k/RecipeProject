@@ -15,9 +15,6 @@ public class CategoryToCategoryCommand implements Converter<Category, CategoryCo
     @Nullable
     @Override
     public CategoryCommand convert(Category source) {
-        if(source == null){
-            return null;
-        }
 
         val CategoryCommand = new CategoryCommand();
         CategoryCommand.setId(source.getId());

@@ -14,9 +14,6 @@ public class NotesCommandToNotes implements Converter<NotesCommand, Notes> {
     @Synchronized
     @Override
     public Notes convert(NotesCommand source) {
-        if(source == null){
-            return null;
-        }
 
         final Notes notes = new Notes();
         notes.setId(source.getId());
