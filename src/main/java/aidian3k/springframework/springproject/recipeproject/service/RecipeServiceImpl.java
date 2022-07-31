@@ -56,6 +56,11 @@ public class RecipeServiceImpl implements RecipeService{
     public RecipeCommand saveRecipeCommand(RecipeCommand command) {
         Recipe detachedRecipe = recipeCommandToRecipe.convert(command);
 
+        if(detachedRecipe == null) {
+            log.error("Illegal recipe was given to the method!");
+            throw new IllegalArgumentException("Illegal recipe was given to the method!");
+        }
+
         Recipe savedRecipe = recipeRepository.save(detachedRecipe);
         log.debug("Saved RecipeId:" + savedRecipe.getId());
         return recipeToRecipeCommand.convert(savedRecipe);

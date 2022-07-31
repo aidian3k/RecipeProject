@@ -39,8 +39,7 @@ public class IngredientServiceImpl implements IngredientService{
         Optional<Recipe> recipeOptional = recipeRepository.findById(recipeId);
 
         if (recipeOptional.isEmpty()){
-            //todo impl error handling
-            log.error("recipe id not found. Id: " + recipeId);
+            log.error("Recipe id not found. Id: " + recipeId);
         }
 
         Recipe recipe = recipeOptional.get();
@@ -62,7 +61,7 @@ public class IngredientServiceImpl implements IngredientService{
     public IngredientCommand saveIngredientCommand(IngredientCommand command) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(command.getRecipeId());
 
-        if(!recipeOptional.isPresent()){
+        if(recipeOptional.isEmpty()){
 
             //todo toss error if not found!
             log.error("Recipe not found for id: " + command.getRecipeId());
