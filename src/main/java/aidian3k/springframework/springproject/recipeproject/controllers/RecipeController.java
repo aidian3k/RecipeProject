@@ -23,7 +23,7 @@ public class RecipeController {
     @RequestMapping("/recipe/{id}/show")
     public String showById(@PathVariable String id, Model model){
         try {
-            Long longId = Long.parseLong(id);
+            Long.parseLong(id);
         } catch(NumberFormatException e ) {
             throw new NumberFormatException("NumberFormatException has been thrown for id: " + id);
         }
@@ -44,7 +44,7 @@ public class RecipeController {
     @RequestMapping("/recipe/{id}/update")
     public String updateRecipe(Model model, @PathVariable String id){
         try {
-            Long longId = Long.parseLong(id);
+            Long.parseLong(id);
         } catch(NumberFormatException e ) {
             throw new NumberFormatException("NumberFormatException has been thrown for id: " + id);
         }
@@ -57,7 +57,7 @@ public class RecipeController {
     @RequestMapping("/recipe/{id}/delete")
     public String deleteRecipe(@PathVariable String id){
         try {
-            Long longId = Long.parseLong(id);
+            Long.parseLong(id);
         } catch(NumberFormatException e ) {
             throw new NumberFormatException("NumberFormatException has been thrown for id: " + id);
         }
