@@ -1,6 +1,5 @@
 package aidian3k.springframework.springproject.recipeproject.commands;
 
-import aidian3k.springframework.springproject.recipeproject.domain.UnitOfMeasure;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
