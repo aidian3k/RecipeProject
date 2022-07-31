@@ -3,7 +3,6 @@ package aidian3k.springframework.springproject.recipeproject.converters;
 import aidian3k.springframework.springproject.recipeproject.commands.RecipeCommand;
 import aidian3k.springframework.springproject.recipeproject.domain.Recipe;
 import lombok.Synchronized;
-import org.jetbrains.annotations.Nullable;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +21,6 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
     }
 
     @Synchronized
-    @Nullable
     @Override
     public Recipe convert(RecipeCommand source) {
         if (source == null) {
