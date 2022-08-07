@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/sfg_dev_user
+    url: jdbc:mysql://localhost:3306/sfg_dev
     username: sfg_dev_user
     password: aidian3k
   jpa:
@@ -8,10 +8,14 @@ spring:
       ddl-auto: validate
     show-sql: true
     database: mysql
+  sql:
+    init:
+      platform: mysql
 #    properties:
 #      javax:
-#       persistence:
-#          create-source: metadata
-#         scripts:
-#            action: create
-#            create-target: sql_script.sql
+#        persistence:
+#          schema-generation:
+#            create-source: metadata
+#            scripts:
+#             action: create
+#              create-target: mysql-generation-schema.sql
